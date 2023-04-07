@@ -1,0 +1,67 @@
+{% extends "staff_lib_temp/staff_lib_base.html" %}
+{% load static %}
+{% block title %}Students book issue{% endblock %}
+{%block content%}
+<link rel ="stylesheet" href="{% static '/css/admin/register_update.css' %}">
+<style>
+  .grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    
+  }
+  .alert {
+  padding: 20px;
+  border-radius: 20px;
+  margin-right: 30px;
+  background-color: #f56e64;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+</style>
+<div class="grid-container">
+  <div class="container" style="padding: 10px;">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.as_p}}
+      <br />
+  
+      <br>
+      <button type="Submit" value="Submit"class="button_register__submit">
+        <span class="button__text">Add Book </span>
+    </button>
+    </form>
+  
+  
+  </div>
+  
+  {% if messages %}   
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    <strong>Error!</strong><br>
+    {% for message in messages %}
+      {{ message }}<br>
+      {% endfor %}
+  </div>
+  {% endif %}
+
+</div>
+
+
+
+{%endblock%}

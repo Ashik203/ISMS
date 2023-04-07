@@ -1,0 +1,63 @@
+.admisn_header{
+    background:#34375B
+}
+.admisn_header h2{
+    text-align:center;
+    color:white;
+    font-size:30px;
+    padding:12px 0px 17px 0px;
+}
+.admisn_body{
+    margin-top:-10px;
+    background: url("/static/images/admission_page.jpg");
+    width:100%;
+    height: 680px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position:relative;
+}
+.back_btn{
+    position:absolute;
+    right:0px;
+    top:0px;
+}
+.back_btn a{
+    padding:7px 20px 7px 20px;
+}
+.admisn_menu{
+    position:absolute;
+    left:0px;
+    bottom:0px;
+}
+.admisn_menu ul{
+    margin-top:425px;
+    padding-left:0px;
+    margin-bottom:0px;
+}
+.admisn_menu ul li a{
+    display: block;
+    padding: 30px 110px;
+    background:#C68F7D;
+    border-bottom: 1px solid #be5403;
+    color: rgb(241, 237, 237);
+    font-size: 16px;
+    position: relative;
+    text-decoration: none;
+
+    /* list-style:none;
+    width:400px;
+    background:#C68F7D;
+    opacity:0.9;
+    text-align:center;
+    border-bottom:1px solid #000;
+    padding:15px; */
+}
+.admisn_menu ul li a:hover{
+    color: #8d1a00;
+    background:rgb(244, 239, 239);
+    border-right: 2px solid #3F3C67;
+}
+.admisn_menu ul li:last-child{
+    border:none;
+}

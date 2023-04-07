@@ -1,0 +1,75 @@
+{% extends "student_temp/student_base.html" %}
+{% load static %}
+{% block title %}Teacher Info{% endblock %}
+{%block content%}
+{% load admin_app_extras%}
+<link rel ="stylesheet" href="{% static '/css/student/cr_notice.css' %}">
+<style>
+    
+        label {
+           display: inline-block;
+           width: 100px;
+            color: #000000; 
+         }
+    
+</style>
+<table style="width:100%" class="fixed">
+    <thead>
+      <tr>
+        <th width="250px">Name</th>
+        <th>Designation</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Room no</th>
+        <th>Phone</th>
+        <th >Education</th>
+        <th style="height:fit-content; width:fit-content">Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in profile_page_obj %}
+        <tr>
+          <td>{{ user.name }}</td>
+          <td>{{ user.designation }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.department }}</td>
+          <td>{{ user.room }}</td>
+          <td>{{ user.phone }}</td>
+          <td style="height: 100px;">{{ user.education}}</td>
+          <td><img src="{{ user.image.url}}" alt="" height=100 width=100 /></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  
+    <div class="container">
+      <ul class="pagination">
+    {% if profile_page_obj.has_previous%}
+       <li><a href="{% my_url 1 'page' request.GET.urlencode%}">&laquo;First</a></li>
+       <li> <a href="{% my_url profile_page_obj.previous_page_number 'page' request.GET.urlencode%}">&laquo;Prevous</a></li>
+      {% else %}
+        <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+
+    {% for i in profile_page_obj.paginator.page_range %}
+    {% if profile_page_obj.number == i %}
+      <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+    {% else %}
+      <li><a href="{% my_url i 'page' request.GET.urlencode%}">{{ i }}</a></li>
+    {% endif %}
+   {% endfor %}
+    {% if profile_page_obj.has_next%}
+   <li> <a href="{% my_url profile_page_obj.next_page_number 'page' request.GET.urlencode%}">Next &raquo;</a></li>
+   <li><a href="{% my_url profile_page_obj.paginator.num_pages 'page' request.GET.urlencode%}">Last &raquo;</a> </li>
+   {% else %}
+         <li class="disabled"><span>&raquo;</span></li>  
+    {% endif %}
+  </ul>
+  <span class="current">
+    Page {{profile_page_obj.number}} of {{profile_page_obj.paginator.num_pages}}
+  </span>
+  </div>
+
+
+{%endblock%}
